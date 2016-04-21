@@ -38,3 +38,10 @@ $(".nav-close").click(function() {
 jQuery(function(){
   jQuery.mark.jump();
 });
+
+
+  $(document).ready(function(){
+  $('tr[data-href]').on("click", function() {
+      document.location = $(this).data('href');
+  });
+});
