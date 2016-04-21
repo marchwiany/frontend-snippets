@@ -1,0 +1,83 @@
+[class*=-container]{
+  @include base-padding;
+  @include outer-container;
+}
+
+.horizontal-rule{
+  border: none;
+  border-bottom: 1px solid $white-med;
+  margin-left: -255px;
+  width: 100vw
+}
+
+
+//Aside
+
+.logo{
+  background-color: darken(#3d3d3e, 5%);
+  @include rem(margin, -25px 0px 25px -25px);
+  @include rem(padding, 20px);
+  width: 255px;
+
+  img{
+    @include center;
+    width: 70px;
+  }
+}
+
+aside{
+  background-color: #3d3d3e;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  @include s-small;
+
+
+  @include media($tablet){
+    height: 100vh;
+    @include position(fixed, 0px null 0px 0px);
+    @include rem(padding, 25px);
+    width: 255px;
+  }
+
+  h6{
+    @include rem(margin-top, 25px);
+    a{ color: $white-base; }
+  }
+
+  li a{ font-weight: normal; }
+
+  a{
+    color: $grey-light;
+    &:hover{
+      color: $white-base;
+      opacity: 0.3;
+    }
+  }
+}
+
+
+//Content
+.landing-container, .footer-container{
+  margin-left: 255px;
+
+  .subheader{
+    @include s-big;
+    @include rem(padding-bottom, 20px);
+  }
+
+  h2{
+    background-color: $white-light;
+    border-bottom: 1px solid $white-med;
+    border-top: 1px solid $white-med;
+    @include rem(margin, 0px -40px);
+    @include rem(padding, 20px 40px);
+  }
+
+  .source{
+    @include s-tiny;
+    @include rem(margin-top, 10px);
+  }
+}
+
+.block{
+  @include rem(padding, 40px 0px);
+}

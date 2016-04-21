@@ -1,0 +1,155 @@
+// Site Navigation Styles
+// ========================================
+$mobile-nav-height: 58px;
+$desktop-nav-height: 81px;
+
+.navigation {
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  background-color: $white-base;
+  @include rem(padding, 15px 20px);
+  position: relative;
+  text-align: center;
+  width: 100%;
+
+  &.active{
+    background-color: $grey-dark;
+  }
+
+  .navigation-container{
+
+  }
+}
+
+
+/*-----------------------
+Logo
+-----------------------*/
+.logo{
+  width: 120px;
+  @include media($tablet) {
+    float: left;
+    width: 230px;
+    z-index: 99999;
+  }
+}
+
+/*-----------------------
+Primary Nav
+-----------------------*/
+.navigation{
+  @include position(fixed, 0 null null null);
+  @include transition(all 0.3s ease-in-out);
+
+  width: 100%;
+  z-index: 9999;
+
+  .navigation-menu{
+    text-align: right;
+    float: right;
+    @include mobile-hide;
+  }
+
+  li {
+    display: inline-block;
+    @include rem(margin, 0 0 0 15px);
+    text-transform: uppercase;
+    vertical-align: -webkit-baseline-middle;
+
+    a{
+      color: $grey-base;
+      font-weight: $bold;
+      @include s-small;
+      letter-spacing: 1px;
+    }
+  }
+}
+
+/*-----------------------
+Mobile Nav Overlay
+-----------------------*/
+
+.navigation-menu{
+  @keyframes fadeIn { to { opacity: 1; } }
+  @include animation(fadeIn .3s ease-in 1 forwards);
+  display: none;
+  opacity: 0;
+
+  @include media($tablet) {
+    @include animation(none);
+    opacity: 1;
+    display: block;
+  }
+
+  a{
+    @include media($tablet) {
+      @include s-tiny;
+      color: $grey-base;
+      letter-spacing: 1px;
+      font-weight: bold;
+
+      &:hover{ color: $grey-dark; }
+    }
+
+    @include media($tablet-landscape) {
+      @include s-small;
+    }
+  }
+
+  .button-red-base{
+    &:hover{ color: $white-base; }
+  }
+
+  &.active{
+    background-color: rgba($black-dark, 0.95);
+    display: block;
+    height: 100%;
+    @include position(fixed, 0px null null null);
+    width: 100%;
+    z-index: 3;
+
+    .nav-link{
+      text-align: center;
+      @include s-large;
+      display: block;
+      width: 100%;
+      margin:0;
+
+      a{
+        color: $white-base;
+        display: block;
+        @include rem(padding, 20px 0);
+
+      }
+      &:hover{
+        background-color: $white-base;
+        a:not(.button-red-base){ color: $black-base; }
+      }
+    }
+  }
+}
+
+// Open and Close Buttons
+.nav-open, .nav-close{
+  cursor: pointer;
+  @include transition(all 0.3s ease-in-out);
+
+  &:hover{ opacity: 0.8; }
+  @include media($tablet) { display: none; }
+}
+
+.nav-open{
+  background-image: url('../images/sprite1.svg');
+  background-position: -330px 0;
+  background-size: 630px 30px;
+  height: 30px;
+  width: 30px;
+}
+
+.nav-open{
+  @include position(absolute, 13px 20px null null);
+  z-index: 2;
+}
+
+.nav-close{
+  @include rem(margin, 13px 20px 0 0);
+}
